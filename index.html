@@ -26,7 +26,12 @@
   // 3. 使用 ReactDOM.render()：
   //    讓 `<h1>hello, world</h1>` 顯示在 `<div id="app">` 中
     ReactDOM.render(
-      <h1>hello, world</h1>,
+      // 1. JSX 讓你可以在 JS 中，使用類 HTML 語法
+      var app = (
+        <div>
+          <div>hello, world</div>
+        </div>
+      );      
       document.getElementById('app')
     );
   </script>
