@@ -5,9 +5,53 @@
   <title>TodoApp</title>
 </head>
 <body>
-  <div>hello, world</div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
+  <!--
+  1. 清空 div，並給它 ID：
+     這區塊是要印出 hello, world 的地方，
+     加入 ID 讓 React 可以抓到該元素
+-->
+  <div id="app"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.0/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.0/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+  <!--
+    2. 加入 script，並指定 `type=text/babel`：
+       這區塊是我們編寫主要程式的地方。
+
+       因為我們用的是 JSX 語法，而非瀏覽器認識的 ES5 語法，
+       透過 Babel 可以將 JSX/ES6/ES7 轉譯成 ES5；
+       所以需要指定 type，讓瀏覽器先將這段程式轉交給 Babel 處理
+  -->
+  <script type="text/babel">
+  // 3. 使用 ReactDOM.render()：
+  //    讓 `<h1>hello, world</h1>` 顯示在 `<div id="app">` 中
+    ReactDOM.render(
+      <h1>hello, world</h1>,
+      document.getElementById('app')
+    );
+  </script>
+
 </body>
 </html>
+
+<!--
+6. 引入第三方 JS 程式
+
+從 cdnjs 中
+複製 react.js 和 react-dom.js 的連結
+複製 babel-core v5.x.x 的 browser.js 的連結（注意：版本請使用 5.x.x）
+將上述三個連結嵌入 index.html 中
+
+
+2. react.js 和 react-dom.js 有什麼差別？
+
+react.js 是 React 的核心 API，而 react-dom.js 則處理對 HTML DOM 的操作。
+
+React 在 0.14 版時，將兩者一分為二；這讓 react.js 可以共用於 Web 和 Mobile (React Native) 中。
+
+3. Babel 和 browser.js 是什麼？
+
+browser.js 是 Babel 的程式庫，而 Babel 是一個 JS 編譯器，讓你可以寫新的 ES6/ES7/JSX 語法，然後轉譯成瀏覽器認識的 ES5 語法。
+
+簡單講，Babel 就像是「翻譯蒟蒻」，而 browser.js 讓你可以在瀏覽器中進行這項翻譯的工作。
+ -->
