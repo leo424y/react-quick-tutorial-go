@@ -21,6 +21,7 @@ class TodoItem extends React.Component {
     const {
       title,
       completed,
+      // 9.3.1. 當刪除按鈕被點選，觸發上層元件 (TodoList) 傳遞的 onDelete callback
       onDelete
     } = this.props;
     return (
@@ -65,6 +66,7 @@ class TodoItem extends React.Component {
 TodoItem.propTypes = {
   title: React.PropTypes.string.isRequired,
   completed: React.PropTypes.bool.isRequired,
+  // 9.3.2. 完成 onDelete 的 propTypes or defaultProps
   onDelete: React.PropTypes.func
 };
 
