@@ -3,7 +3,7 @@ const {
   TodoHeader,
   TodoList
 } = window.App;
-
+// 10.3.2.2. 將新增邏輯抽成一個 function
 const _createTodo = (todos, title) => {
   todos.push({
     id: todos[todos.length - 1].id + 1,
@@ -18,7 +18,7 @@ const _updateTodo = (todos, id, title) => {
   if (target) target.title = title;
   return todos;
 };
-// 6. 將切換邏輯抽成一個 function
+
 const _toggleTodo = (todos, id, completed) => {
   const target = todos.find((todo) => todo.id === id);
   if (target) target.completed = completed;
@@ -73,13 +73,17 @@ class TodoApp extends React.Component {
           todoCount={todos.filter((todo) => !todo.completed).length}
         />
         <InputField
+           // 10.3.2.1. 呼叫 _createTodo，更新 todos 狀態
           placeholder="新增待辦清單"
-          onSubmitEditing={this.updateTodosBy(_createTodo)}
+          onSubmitEditing={
+            (title) => this.setState({
+              todos: _createTodo(todos, title)
+            })
+          }
         />
         <TodoList
           todos={todos}
           onUpdateTodo={this.updateTodosBy(_updateTodo)}
-          // 10.1.5. 呼叫 _toggleTodo，更新 todos 狀態
           onToggleTodo={this.updateTodosBy(_toggleTodo)}
           onDeleteTodo={this.updateTodosBy(_deleteTodo)}
         />
