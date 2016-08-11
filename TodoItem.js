@@ -38,6 +38,10 @@ class TodoItem extends React.Component {
       <InputField
         autoFocus
         placeholder="編輯待辦事項"
+        // 10.4.1. 將 value 屬性改為 defaultValue：
+        //    如果只給予 value，不給予 onChange callback，
+        //    使用者輸入的資料將不會被更新，因此改為 defaultValue。
+        //defaultValue={title}
         value={title}
         onBlur={this.toggleEditMode}
         onKeyDown={(e) => {
@@ -46,6 +50,10 @@ class TodoItem extends React.Component {
             this.toggleEditMode();
           }
         }}
+        // 10.4.1.2. 傳遞 onSubmitEditing callback，該 callback 做兩件事情：
+        //    a. 呼叫上層元件的 onUpdate callback
+        //    b. 切換為「預覽模式」
+        // 10.4.2.6. 加入 onSubmitEditing callback
         onSubmitEditing={(content) => {
           onUpdate && onUpdate(content);
           this.toggleEditMode();

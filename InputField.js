@@ -1,11 +1,13 @@
 class InputField extends React.Component {
   constructor(props, context) {
+    // 10.4.2.1. 讓上層元件傳遞的 value，初始元件狀態
     super(props, context);
     this.state = { value: props.value || '' };
+    // 10.4.2.2. 手動綁定 this 給 handleChange
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
-
+  // 10.4.2.3. handleChange 用來傾聽 input onChange 事件，將使用者輸入的資料更新到元件狀態中
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
@@ -27,6 +29,7 @@ class InputField extends React.Component {
         }
         // 10.3.3. 將輸入框資料清空
         //e.target.value = '';
+        // 10.4.2.4. 資料都從元件狀態中取出，和呼叫 this.setState 更新狀態
         this.setState({ value: '' });
         break;
     }
@@ -35,6 +38,7 @@ class InputField extends React.Component {
   }
 
   render() {
+    // 10.4.2.5. 提供 value 和 onChange props
     return (
       <input
         {...this.props}
