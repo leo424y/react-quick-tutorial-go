@@ -23,7 +23,7 @@ class InputField extends React.Component {
     const { value } = this.state;
     switch (e.keyCode) {
       case 13:
-      // 10.3.2. 如果使用者沒有鍵入任何值（包括都是空白），則不會呼叫 callback
+      // 10.3.2. 如果使用者沒有鍵入任何值（包括都是空白）- trim()，則不會呼叫 callback
         if (value.trim()) {
           onSubmitEditing && onSubmitEditing(value);
         }

@@ -20,6 +20,7 @@ class TodoItem extends React.Component {
     } = this.props;
     return (
       <div>
+        <button onClick={() => onDelete && onDelete()}>x</button>
         <input
           type="checkbox"
           checked={completed}
@@ -27,7 +28,6 @@ class TodoItem extends React.Component {
           onChange={() => onToggle && onToggle(!completed)}
         />
         <span onDoubleClick={this.toggleEditMode}>{title}</span>
-        <button onClick={() => onDelete && onDelete()}>x</button>
       </div>
     );
   }
